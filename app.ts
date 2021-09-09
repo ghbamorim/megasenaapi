@@ -1,5 +1,5 @@
 import Express from "express";
-import { init } from "../ppt-api/scr/puppeteer";
+import { init } from "./scr/puppeteer";
 
 const app = Express();
 
