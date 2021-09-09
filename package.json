@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node app.ts",
     "dev": "nodemon --inspect  --exec \"ts-node app.ts\" -e ts",
+    "heroku" : "node build/app.js",
     "build": "tsc --project ./"
   },
   "author": "",
