@@ -65,7 +65,7 @@ export const init = async () => {
       headless: true,
       args: ["--no-sandbox", "--disabled-setupid-sandbox"],
     });
-    console.log("const browser = await puppeteer.launch({");
+    console.log("const browser =  await puppeteer.launch({");
     const page = await browser.newPage();
     await page.goto(
       "http://loterias.caixa.gov.br/wps/portal/loterias/landing/megasena/"
