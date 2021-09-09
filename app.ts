@@ -17,9 +17,9 @@ app.get("/allresults", async (req: any, res: any) => {
     res.status(500).json({ error: err });
   }
 
-  res.send("sincronizando...  isto pode levar alguns segundos");
+  res.send("sincronizando... isto pode levar alguns segundos");
 });
 
 app.listen(PORT, () => {
-  console.log(`⚡️[server]: Server is running at https://localhost:${PORT}`);
+  console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
 });
