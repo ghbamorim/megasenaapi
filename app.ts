@@ -4,7 +4,7 @@ import { init } from "./scr/puppeteer";
 
 const app = Express();
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 export class Results {
   date?: Date;
