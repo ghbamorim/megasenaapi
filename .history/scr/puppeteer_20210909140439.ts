@@ -79,7 +79,7 @@ export const init = async () => {
     );
     if (link) {
       await link.click();
-      console.log("await link.click(); ");
+      console.log("await link.click();");
       await page.waitForTimeout(10000);
       const pages = await browser.pages();
       const resultPage = pages[2];
