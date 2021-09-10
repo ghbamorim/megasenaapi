@@ -50,7 +50,7 @@ app.get("/results/:idconcurso", async (req: any, res: any) => {
 
 app.get("/last", async (req: any, res: any) => {
   try {
-    const json: Results = require("file.json");
+    const json: Results = require("./file.json");
     const found = json.results.slice(-1)[0];
     res.status(200).json(found);
   } catch (err) {
