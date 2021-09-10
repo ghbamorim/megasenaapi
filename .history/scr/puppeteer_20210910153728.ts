@@ -105,6 +105,7 @@ export const init = async () => {
       };
       console.log("10");
       storeData(jsonResult, "resultados.json");
+
       console.log("11");
     }
 
