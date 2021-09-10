@@ -105,7 +105,6 @@ export const init = async () => {
       };
       console.log("10");
       storeData(jsonResult, "file.json");
-      const json = require("file.json");
       console.log("11");
     }
 
