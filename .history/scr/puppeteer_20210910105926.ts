@@ -99,8 +99,8 @@ export const init = async () => {
   await browser.close();
 } catch (error) {
   console.log(error)
-  if ((error as any).message) {
-    console.log((error as any).message)
+  if (error.message) {
+    console.log(error.message)
   }
 }
 )
