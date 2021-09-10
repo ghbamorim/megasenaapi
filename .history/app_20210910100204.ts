@@ -13,8 +13,7 @@ export class Results {
 
 app.get("/allresults", async (req: any, res: any) => {
   try {
-    init();
-    res.status(200).json({ message: "aguarde" });
+    res.status(200).json(await init());
   } catch (err) {
     res.status(500).json({ error: err });
   }

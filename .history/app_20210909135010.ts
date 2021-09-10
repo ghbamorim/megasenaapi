@@ -1,6 +1,5 @@
 import Express from "express";
 import { init } from "./scr/puppeteer";
-const fs = require("fs");
 
 const app = Express();
 
@@ -13,20 +12,12 @@ export class Results {
 
 app.get("/allresults", async (req: any, res: any) => {
   try {
-    init();
-    res.status(200).json({ message: "aguarde" });
+    res.status(200).json(await init());
   } catch (err) {
     res.status(500).json({ error: err });
   }
-});
 
-app.get("/returnResults", async (req: any, res: any) => {
-  try {
-    const obj = JSON.parse(fs.readFileSync("resultados.json", "utf8"));
-    res.status(200).json(obj);
-  } catch (err) {
-    res.status(500).json({ error: err });
-  }
+  res.send("sincronizando... isto pode levar alguns segundos");
 });
 
 app.listen(PORT, () => {

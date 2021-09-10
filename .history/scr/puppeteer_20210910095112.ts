@@ -92,11 +92,8 @@ export const init = async () => {
       };
     }
     await browser.close();
-    if (!jsonResult) {
-      jsonResult = { retorno: 404, mensagem: "Não foi coletado" };
+    if (jsonResult) {
     }
-    const jsonContent = JSON.stringify(jsonResult);
-    fs.writeFileSync("resultados.json", jsonContent, "utf8");
 
     return jsonResult;
   } catch (error) {

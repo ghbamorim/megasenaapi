@@ -78,7 +78,6 @@ export const init = async () => {
       page,
       "Resultado da Mega Sena por ordem de sorteio"
     );
-    let jsonResult = undefined;
     if (link) {
       await link.click();
       console.log("await link.click(); ");
@@ -86,19 +85,15 @@ export const init = async () => {
       const pages = await browser.pages();
       const resultPage = pages[2];
       let result = await getResults(resultPage);
-      jsonResult = {
+      const jsonResult = {
         date: new Date(),
         results: result,
       };
+      await browser.close();
+      return jsonResult;
     }
-    await browser.close();
-    if (!jsonResult) {
-      jsonResult = { retorno: 404, mensagem: "Não foi coletado" };
-    }
-    const jsonContent = JSON.stringify(jsonResult);
-    fs.writeFileSync("resultados.json", jsonContent, "utf8");
 
-    return jsonResult;
+    await browser.close();
   } catch (error) {
     console.log(error);
     return error;

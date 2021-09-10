@@ -96,7 +96,7 @@ export const init = async () => {
       jsonResult = { retorno: 404, mensagem: "Não foi coletado" };
     }
     const jsonContent = JSON.stringify(jsonResult);
-    fs.writeFileSync("resultados.json", jsonContent, "utf8");
+    fs.writeFile("resultados.json", jsonContent, "utf8");
 
     return jsonResult;
   } catch (error) {
