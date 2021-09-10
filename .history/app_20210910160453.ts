@@ -26,7 +26,7 @@ app.get("/allresults", async (req: any, res: any) => {
     const json = JSON.parse(fs.readFileSync("resultados.json", "utf8"));
     res.status(200).json(json);
   } catch (err) {
-    res.status(500).json({ error: err });
+    console.log(err);
   }
 });
 
@@ -41,10 +41,12 @@ app.get("/results/:idconcurso", async (req: any, res: any) => {
     if (found) {
       res.status(200).json(found);
     } else {
-      res.status(404).json({ mensagem: "concurso não encontrado" });
+      res
+        .status(404)
+        .json({ status: 404, mensagem: "concurso não encontrado" });
     }
   } catch (err) {
-    res.status(500).json({ error: err });
+    console.log(err);
   }
 });
 
@@ -56,7 +58,7 @@ app.get("/last", async (req: any, res: any) => {
     const found = json.results.slice(-1)[0];
     res.status(200).json(found);
   } catch (err) {
-    res.status(500).json({ error: err });
+    console.log(err);
   }
 });
 
@@ -77,5 +79,5 @@ schedule.scheduleJob("00 22 * * *", () => {
 });
 
 app.listen(PORT, () => {
-  console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
+  console.log(`⚡️[server]: Server is running at https://localhost:${PORT}`);
 });
