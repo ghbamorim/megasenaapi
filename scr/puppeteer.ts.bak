@@ -85,7 +85,7 @@ export const init = async () => {
 
     const link = await findByLink(
       page,
-      "Resultado da Mega Sena por ordem de sorteio"
+      "Resultado da Mega Sena por ordem de sorteio "
     );
     if (link) {
       console.log("4");
