@@ -2,7 +2,7 @@ import Express from "express";
 import schedule from "node-schedule";
 import { init } from "./scr/puppeteer";
 import fs from "fs";
-import cors from "cors";
+var cors = require("cors");
 
 const app = Express();
 

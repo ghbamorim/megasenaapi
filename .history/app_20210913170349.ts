@@ -2,7 +2,7 @@ import Express from "express";
 import schedule from "node-schedule";
 import { init } from "./scr/puppeteer";
 import fs from "fs";
-import cors from "cors";
+var cors = require("cors");
 
 const app = Express();
 
@@ -12,8 +12,6 @@ export class Results {
   date?: Date;
   results: any[] = [];
 }
-
-app.use(cors());
 
 app.post("/refresh", async (req: any, res: any) => {
   try {
