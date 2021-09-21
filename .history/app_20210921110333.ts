@@ -64,6 +64,14 @@ app.get("/last", async (req: any, res: any) => {
   }
 });
 
+schedule.scheduleJob("00 20 * * *", () => {
+  try {
+    init();
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
 });

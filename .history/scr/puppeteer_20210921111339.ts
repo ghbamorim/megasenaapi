@@ -9,7 +9,7 @@ const storeData = (data: any, path: string) => {
   }
 };
 
-export const init = async (callBack?: Function) => {
+export const init = async (callBack: Function) => {
   try {
     function getText(linkText: any) {
       linkText = linkText.replace(/\r\n|\r/g, "\n");

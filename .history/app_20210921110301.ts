@@ -1,4 +1,5 @@
 import Express from "express";
+import schedule from "node-schedule";
 import { init } from "./scr/puppeteer";
 import fs from "fs";
 import cors from "cors";
@@ -14,7 +15,7 @@ export class Results {
 }
 
 app.use(cors());
-app.use(refreshResults);
+app.use(refreshResults;
 
 app.post("/refresh", async (req: any, res: any) => {
   try {
@@ -61,6 +62,22 @@ app.get("/last", async (req: any, res: any) => {
     res.status(200).json(found);
   } catch (err) {
     res.status(500).json({ error: err });
+  }
+});
+
+schedule.scheduleJob("00 20 * * *", () => {
+  try {
+    init();
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+schedule.scheduleJob("00 22 * * *", () => {
+  try {
+    init();
+  } catch (error) {
+    console.log(error);
   }
 });
 
