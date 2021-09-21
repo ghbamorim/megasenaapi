@@ -41,7 +41,7 @@ export const init = async (callBack?: Function) => {
       const result = [];
 
       for (const item of arr) {
-        if (item.length > 10) {
+        if (item.length > 3) {
           result.push({
             concurso: item[0],
             local: item[1],
