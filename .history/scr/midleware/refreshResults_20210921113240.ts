@@ -18,7 +18,7 @@ const refreshResults = (req: any, res: Response, next: NextFunction) => {
   const date = new Date(results.date);
   const now = new Date();
   if (
-    now.getDate() - date.getDate() >= 1 / 12 &&
+    now.getDate() - date.getDate() >= 1 / 6 &&
     !RefreshControl.getInstance().updating
   ) {
     RefreshControl.getInstance().updating = true;
