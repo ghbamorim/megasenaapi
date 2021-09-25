@@ -14,10 +14,13 @@ export class RefreshControl {
 }
 
 const refreshResults = (req: any, res: Response, next: NextFunction) => {
-  const fileAlreadyExists = fs.existsSync("resultados.json");
+  fil;
+  if (!fs.existsSync("resultados.json")) {
+    res.status(102).send("sincronizando... isto pode levar alguns segundos");
+  }
   let results = undefined;
   let date = undefined;
-  if (fileAlreadyExists) {
+  if (fs.existsSync("resultados.json")) {
     results = JSON.parse(fs.readFileSync("resultados.json", "utf8"));
     date = new Date(results.date);
   }
@@ -34,13 +37,8 @@ const refreshResults = (req: any, res: Response, next: NextFunction) => {
       RefreshControl.getInstance().updating = false;
     });
   }
-
-  if (fileAlreadyExists) {
+  if (fs.existsSync("resultados.json")) {
     return next();
-  } else {
-    return res
-      .status(202)
-      .send("sincronizando... isto pode levar alguns segundos");
   }
 };
 

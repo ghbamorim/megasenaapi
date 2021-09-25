@@ -34,12 +34,11 @@ const refreshResults = (req: any, res: Response, next: NextFunction) => {
       RefreshControl.getInstance().updating = false;
     });
   }
-
   if (fileAlreadyExists) {
     return next();
   } else {
     return res
-      .status(202)
+      .status(102)
       .send("sincronizando... isto pode levar alguns segundos");
   }
 };

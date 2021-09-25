@@ -39,7 +39,7 @@ const refreshResults = (req: any, res: Response, next: NextFunction) => {
     return next();
   } else {
     return res
-      .status(202)
+      .status(200)
       .send("sincronizando... isto pode levar alguns segundos");
   }
 };
