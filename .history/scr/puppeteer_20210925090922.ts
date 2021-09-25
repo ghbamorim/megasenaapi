@@ -42,7 +42,7 @@ export const init = async (callBack?: Function) => {
 
       for (const item of arr) {
         if (
-          item.length > 9 &&
+          item.length > 10 &&
           item[3] &&
           item[4] &&
           item[5] &&
