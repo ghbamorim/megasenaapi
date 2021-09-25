@@ -6,6 +6,8 @@ import refreshResults from "./scr/midleware/refreshResults";
 
 const app = Express();
 
+const PORT = process.env.PORT || 2000;
+
 export class Results {
   date?: Date;
   results: any[] = [];

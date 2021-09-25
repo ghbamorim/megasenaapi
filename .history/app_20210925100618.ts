@@ -6,6 +6,8 @@ import refreshResults from "./scr/midleware/refreshResults";
 
 const app = Express();
 
+const PORT = process.env.PORT || 2000;
+
 export class Results {
   date?: Date;
   results: any[] = [];
@@ -60,6 +62,10 @@ app.get("/last", async (req: any, res: any) => {
   } catch (err) {
     res.status(500).json({ error: err });
   }
+});
+
+app.listen(PORT, () => {
+  console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
 });
 
 export default app;

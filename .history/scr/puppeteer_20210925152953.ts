@@ -122,7 +122,6 @@ export const init = async (callBack?: Function) => {
       callBack();
     }
   } catch (error) {
-    console.log(`Error at step ${debugStep}`);
     console.log(error);
     if ((error as any).message) {
       console.log((error as any).message);

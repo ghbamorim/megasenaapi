@@ -24,7 +24,6 @@ const refreshResults = (req: any, res: Response, next: NextFunction) => {
   const now = new Date();
   if (
     !results ||
-    !date ||
     (now.getDate() - date.getDate() >= 1 / 12 &&
       !RefreshControl.getInstance().updating)
   ) {
