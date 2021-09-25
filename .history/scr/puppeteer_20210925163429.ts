@@ -88,10 +88,13 @@ export const init = async (callBack?: Function) => {
     const page = await browser.newPage();
     debugStep = 2;
     await page.setDefaultNavigationTimeout(180000);
-    await page.goto(Config.urls.caixa);
+    await page.goto(config.urls.caixa);
     debugStep = 3;
 
-    const link = await findByLink(page, Config.messages.resultOrdemSorteio);
+    const link = await findByLink(
+      page,
+      "Resultado da Mega Sena por ordem de sorteio"
+    );
     if (link) {
       const pageTarget = page.target();
       debugStep = 4;

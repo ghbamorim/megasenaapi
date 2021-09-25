@@ -1,6 +1,5 @@
 const puppeteer = require("puppeteer");
 import fs from "fs";
-import Config from "./config";
 
 const storeData = (data: any, path: string) => {
   try {
@@ -88,10 +87,15 @@ export const init = async (callBack?: Function) => {
     const page = await browser.newPage();
     debugStep = 2;
     await page.setDefaultNavigationTimeout(180000);
-    await page.goto(Config.urls.caixa);
+    await page.goto(
+      "http://loterias.caixa.gov.br/wps/portal/loterias/landing/megasena/"
+    );
     debugStep = 3;
 
-    const link = await findByLink(page, Config.messages.resultOrdemSorteio);
+    const link = await findByLink(
+      page,
+      "Resultado da Mega Sena por ordem de sorteio"
+    );
     if (link) {
       const pageTarget = page.target();
       debugStep = 4;

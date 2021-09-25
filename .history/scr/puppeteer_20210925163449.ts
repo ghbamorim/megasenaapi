@@ -91,7 +91,10 @@ export const init = async (callBack?: Function) => {
     await page.goto(Config.urls.caixa);
     debugStep = 3;
 
-    const link = await findByLink(page, Config.messages.resultOrdemSorteio);
+    const link = await findByLink(
+      page,
+      "Resultado da Mega Sena por ordem de sorteio"
+    );
     if (link) {
       const pageTarget = page.target();
       debugStep = 4;

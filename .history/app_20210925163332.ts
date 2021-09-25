@@ -4,7 +4,6 @@ import fs from "fs";
 import cors from "cors";
 import refreshResults from "./scr/midleware/refreshResults";
 import Config from "./scr/config";
-import { config } from "process";
 
 const app = Express();
 
@@ -19,7 +18,7 @@ app.use(refreshResults);
 app.post("/refresh", async (req: any, res: any) => {
   try {
     init();
-    res.status(200).send(Config.messages.sync);
+    res.status(200).send(Config.mensagens.sync);
   } catch (err) {
     res.status(500).json({ error: err });
   }
@@ -45,7 +44,7 @@ app.get("/results/:idconcurso", async (req: any, res: any) => {
     if (found) {
       res.status(200).json(found);
     } else {
-      res.status(404).json({ mensagem: Config.messages.notFound });
+      res.status(404).json({ mensagem: "concurso não encontrado" });
     }
   } catch (err) {
     res.status(500).json({ error: err });

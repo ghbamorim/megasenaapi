@@ -39,7 +39,7 @@ const refreshResults = (req: any, res: Response, next: NextFunction) => {
   if (fileAlreadyExists) {
     return next();
   } else {
-    return res.status(202).send(Config.messages.sync);
+    return res.status(202).send(Config.mensagens.sync);
   }
 };
 

@@ -1,6 +1,5 @@
 const puppeteer = require("puppeteer");
 import fs from "fs";
-import Config from "./config";
 
 const storeData = (data: any, path: string) => {
   try {
@@ -81,17 +80,22 @@ export const init = async (callBack?: Function) => {
     };
 
     const browser = await puppeteer.launch({
-      headless: true,
+      headless: false,
       args: ["--no-sandbox", "--disabled-setupid-sandbox"],
     });
     debugStep = 1;
     const page = await browser.newPage();
     debugStep = 2;
     await page.setDefaultNavigationTimeout(180000);
-    await page.goto(Config.urls.caixa);
+    await page.goto(
+      "http://loterias.caixa.gov.br/wps/portal/loterias/landing/megasena/"
+    );
     debugStep = 3;
 
-    const link = await findByLink(page, Config.messages.resultOrdemSorteio);
+    const link = await findByLink(
+      page,
+      "Resultado da Mega Sena por ordem de sorteio"
+    );
     if (link) {
       const pageTarget = page.target();
       debugStep = 4;
@@ -103,17 +107,20 @@ export const init = async (callBack?: Function) => {
       );
 
       debugStep = 6;
-      const resultPage = await newTarget.page();
+
       debugStep = 7;
-      let result = await getResults(resultPage);
+
+      const resultPage = await newTarget.page();
       debugStep = 8;
+      let result = await getResults(resultPage);
+      debugStep = 9;
       const jsonResult = {
         date: new Date(),
         results: result,
       };
-      debugStep = 9;
-      storeData(jsonResult, "resultados.json");
       debugStep = 10;
+      storeData(jsonResult, "resultados.json");
+      debugStep = 11;
     }
 
     await browser.close();
