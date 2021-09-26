@@ -27,10 +27,12 @@ export const init = async (callBack?: Function) => {
         let linkText = await valueHandle.jsonValue();
         const text = getText(linkText);
         if (linkString == text) {
-          return link;
+          const hrefHandle = await link.getProperty("href");
+          const href = await hrefHandle.jsonValue();
+          return [link, href];
         }
       }
-      return null;
+      return [null, null];
     }
 
     const getResults = async (page: any) => {
@@ -91,30 +93,23 @@ export const init = async (callBack?: Function) => {
     await page.goto(Config.urls.caixa);
     debugStep = 3;
 
-    const link = await findByLink(page, Config.messages.resultOrdemSorteio);
-    if (link) {
-      const pageTarget = page.target();
+    const [link, url] = await findByLink(
+      page,
+      Config.messages.resultOrdemSorteio
+    );
+    if (link && url) {
       debugStep = 4;
-
-      await link.click();
+      await page.goto(url);
       debugStep = 5;
-      const newTarget = await browser.waitForTarget(
-        (target: any) => target.opener() === pageTarget
-      );
-
+      let result = await getResults(page);
       debugStep = 6;
-      const resultPage = await newTarget.page();
-      await resultPage.waitForSelector("body");
-      debugStep = 7;
-      let result = await getResults(resultPage);
-      debugStep = 8;
       const jsonResult = {
         date: new Date(),
         results: result,
       };
-      debugStep = 9;
+      debugStep = 7;
       storeData(jsonResult, "resultados.json");
-      debugStep = 10;
+      debugStep = 8;
     }
 
     await browser.close();

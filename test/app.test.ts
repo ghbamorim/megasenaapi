@@ -20,7 +20,7 @@ const testAllResults = (json: any) => {
   testAllCols(last);
 };
 
-jest.setTimeout(40000);
+jest.setTimeout(100000);
 test("should refresh json file", async () => {
   if (fs.existsSync("resultados.json")) {
     fs.unlinkSync("resultados.json");
@@ -39,14 +39,14 @@ test("all results", async () => {
   testAllResults(res.body);
 });
 
-test("result 123", async () => {
-  const res = await request(app).get("/results/123");
-  expect(res.body.coluna_1).toBe("013");
-  expect(res.body.coluna_2).toBe("014");
-  expect(res.body.coluna_3).toBe("016");
-  expect(res.body.coluna_4).toBe("026");
-  expect(res.body.coluna_5).toBe("032");
-  expect(res.body.coluna_6).toBe("042");
+test("result 2412", async () => {
+  const res = await request(app).get("/results/2412");
+  expect(res.body.coluna_1).toBe("009");
+  expect(res.body.coluna_2).toBe("016");
+  expect(res.body.coluna_3).toBe("034");
+  expect(res.body.coluna_4).toBe("036");
+  expect(res.body.coluna_5).toBe("049");
+  expect(res.body.coluna_6).toBe("060");
 });
 
 test("last", async () => {
