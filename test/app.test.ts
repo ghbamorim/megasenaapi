@@ -53,3 +53,15 @@ test("last", async () => {
   const res = await request(app).get("/last");
   testAllCols(res.body);
 });
+
+test("stats", async () => {
+  const res = await request(app)
+    .get("/stats")
+    .send({ results: [1, 2, 3] });
+  expect(res.body[0].coluna_1).toBe("001");
+  expect(res.body[0].coluna_2).toBe("002");
+  expect(res.body[0].coluna_3).toBe("003");
+  expect(res.body[0].coluna_4).toBe("011");
+  expect(res.body[0].coluna_5).toBe("028");
+  expect(res.body[0].coluna_6).toBe("043");
+});
