@@ -56,7 +56,7 @@ test("last", async () => {
 
 test("stats", async () => {
   const res = await request(app)
-    .get("/stats")
+    .post("/stats")
     .send({ results: [1, 2, 3] });
   expect(res.body[0].coluna_1).toBe("001");
   expect(res.body[0].coluna_2).toBe("002");

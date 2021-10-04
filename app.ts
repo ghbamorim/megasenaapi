@@ -65,7 +65,7 @@ app.get("/last", async (req: any, res: any) => {
   }
 });
 
-app.get("/stats", async (req: any, res: any) => {
+app.post("/stats", async (req: any, res: any) => {
   try {
     const userNumbers = req.body.results;
     const json: Results = JSON.parse(
